@@ -3,24 +3,42 @@ import { useHistory } from "react-router";
 
 import { AuthContext } from "../../contexts/AuthContext";
 
+import { Container } from './styles';
+import Google from '../../assets/img/google.svg';
+import Facebook from '../../assets/img/facebook.svg';
+
 export function Login() {
     const history = useHistory();
-    const { user, signInWithGoogle } = useContext(AuthContext);
+    const { user, signInWithGoogle, signInWithFacebook } = useContext(AuthContext);
 
-    const handleSignIn = async () => {
+    const handleGoogleSignIn = async () => {
         if(!user) await signInWithGoogle();
         
         setTimeout(() => {
             history.push('/home');
-        }, 1000);
+        }, 500);
     }
 
-    return (
-        <div>
-            <h1>Lorem ipsum ...</h1>
-            <p>{user?.name}</p>
+    // const handleFacebookSignIn = async () => {
+    //     if(!user) await signInWithFacebook();
+        
+    //     setTimeout(() => {
+    //         history.push('/home');
+    //     }, 500);
+    // }
 
-            <button onClick={handleSignIn}>Entrar com Google</button>
-        </div>
+    return (
+        <Container>
+            <div>
+                <p>Entrar com</p>
+                <button onClick={handleGoogleSignIn}>
+                    <img src={Google} alt="Google" /> Entrar com Google
+                </button>
+                {/* <p>ou</p>
+                <button onClick={handleFacebookSignIn}>
+                    <img src={Facebook} alt="Facebook" /> Entrar com Facebook
+                </button> */}
+            </div>
+        </Container>
     )
 }

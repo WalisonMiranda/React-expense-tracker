@@ -1,11 +1,16 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { formatter } from "../../helpers/numberFormat";
 
 import { Container } from './style';
+import lixeira from '../../assets/img/lixeira.png';
 
 export function History() {
   const { transactions } = useContext(AuthContext);
+
+  const handleDeleteTransaction = (id: string) => {
+    console.log('deleted', id);
+  }
 
   return (
     <Container>
@@ -29,7 +34,12 @@ export function History() {
                   </td>
                   <td>{transaction.description}</td>
                   <td>{transaction.date}</td>
-                  <td style={{background: transaction.ammount < 0 ? 'var(--red)' : 'var(--green'}} />
+                  <td style={{background: transaction.ammount < 0 ? 'var(--red)' : 'var(--green'}}>
+                    <img 
+                      onClick={(e: React.MouseEvent<HTMLElement>) => handleDeleteTransaction(id)} 
+                      src={lixeira} 
+                      alt="excluir"/>
+                  </td>
                 </tr>
               )
             })

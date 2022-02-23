@@ -12,6 +12,7 @@ export function Navbar() {
 
   const handleSignOut = () => {
     signOut();
+    
     history.push('/');
   }
 

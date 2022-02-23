@@ -31,6 +31,7 @@ type TransactionsProps = {
 type AuthContextProps = {
     user: User | undefined;
     signInWithGoogle: () => Promise<void>;
+    signInWithFacebook: () => Promise<void>;
     signOut: () => Promise<void>
     transactions: TransactionsProps[];
 }
@@ -82,18 +83,38 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
             });
         }
     }
+
+    const signInWithFacebook = async () => {
+        const provider = new firebase.auth.FacebookAuthProvider();
+
+        const result = await auth.signInWithPopup(provider);
+
+        if(result.user) {
+            const { displayName, photoURL, uid } = result.user;
+
+            if (!displayName || !photoURL) {
+                throw new Error("Missing information from Google Account");
+            }
+        
+            setUser({
+                id: uid,
+                name: displayName,
+                avatar: photoURL,
+            });
+        }
+    }
     
     const signOut = async () => {
-        return await auth.signOut();
+        await auth.signOut();
     }
 
     useEffect(() => {
-        const transactionRef = database.ref("transactions");
+        const transactionRef = database.ref(`users/${user?.id}/user_transactions`);
 
-        transactionRef.on("value", (transactions) => {
+        transactionRef.on("value", (user_transactions) => {
         const transactionsList: any[] = [];
 
-        const databaseTransactions = transactions.val();
+        const databaseTransactions = user_transactions.val();
         const firebaseTransactions: FirebaseTransactionsProps =
             databaseTransactions ?? {};
 
@@ -114,12 +135,17 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
         });
         
         return () => {
-        transactionRef.off("value");
+            transactionRef.off("value");
         };
-    }, []);
+
+    }, [user]);
 
     return (
-        <AuthContext.Provider value={{ signInWithGoogle, signOut, user, transactions }}>
+        <AuthContext.Provider value={{ signInWithGoogle, 
+                                       signInWithFacebook,
+                                       signOut,
+                                       user,
+                                       transactions }}>
             {children}
         </AuthContext.Provider>
     )

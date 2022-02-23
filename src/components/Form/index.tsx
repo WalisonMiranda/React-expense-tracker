@@ -1,6 +1,7 @@
-import { useState, FormEvent} from "react";
+import { useState, FormEvent, useContext } from "react";
 
 import { database } from "../../services/firebase";
+import { AuthContext } from '../../contexts/AuthContext';
 
 import { Button } from "../index";
 
@@ -18,6 +19,8 @@ type TransactionFormProps = {
 }
 
 export function Form({ buttonColor, buttonType }: ButtonProps) {
+  const { user } = useContext(AuthContext);
+  
   const [transaction, setTransaction] = useState<TransactionFormProps>({
     ammount: 0,
     description: '',
@@ -36,7 +39,7 @@ export function Form({ buttonColor, buttonType }: ButtonProps) {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    const transactionRef = database.ref('transactions');
+    const transactionRef = database.ref(`users/${user?.id}/user_transactions`);
 
     if(transaction.ammount === 0) {
       setError(true)

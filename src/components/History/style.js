@@ -37,6 +37,16 @@ const Container = styled.div`
     td:last-child {
       width: 20px;
     }
+
+    td img {
+      height: 22px;
+      width: auto;
+      cursor: pointer;
+
+      :hover {
+        transform: scale(1.1);
+      }
+    }
   }
 `;
 

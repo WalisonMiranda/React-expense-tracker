@@ -1,4 +1,3 @@
-
 import { Container } from './styles.js';
 
 import { Panel, History } from '../../components';

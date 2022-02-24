@@ -5,7 +5,11 @@ import { formatter } from "../../helpers/numberFormat";
 import { Container } from './style';
 import lixeira from '../../assets/img/lixeira.png';
 
-export function History() {
+type HistoryProps = {
+  transactionsLenght: number,
+}
+
+export function History({ transactionsLenght }: HistoryProps) {
   const { transactions } = useContext(AuthContext);
 
   const handleDeleteTransaction = (id: string) => {
@@ -25,7 +29,7 @@ export function History() {
         </thead>
         <tbody>
           {
-            transactions.slice(-6).reverse().map(item => {
+            transactions.slice(transactionsLenght).reverse().map(item => {
               const { id, transaction } = item;
               return (
                 <tr key={id}>

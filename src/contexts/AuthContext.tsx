@@ -106,6 +106,8 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
     
     const signOut = async () => {
         await auth.signOut();
+        
+        setUser(undefined);
     }
 
     useEffect(() => {

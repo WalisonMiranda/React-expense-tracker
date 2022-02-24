@@ -12,7 +12,6 @@ export function Navbar() {
 
   const handleSignOut = () => {
     signOut();
-    
     history.push('/');
   }
 
@@ -25,7 +24,7 @@ export function Navbar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/history" activeClassName="Active">
+          <NavLink to="/transactions" activeClassName="Active">
             HISTÓRICO
           </NavLink>
         </li>

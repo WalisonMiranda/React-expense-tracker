@@ -1,6 +1,6 @@
 import { Login } from './Login';
 import { Home } from './Home';
-import { History } from './History';
+import { Transactions } from './Transactions';
 import { NotFound } from './404';
 
-export { Login, Home, History, NotFound }
+export { Login, Home, Transactions, NotFound }

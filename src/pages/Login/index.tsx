@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useHistory } from "react-router";
 
 import { AuthContext } from "../../contexts/AuthContext";
@@ -29,7 +29,12 @@ export function Login() {
 
     return (
         <Container>
-            <div>
+            <div className="line"></div>
+            <div className="title">
+                <h1>EXPENSE</h1> 
+                <h1>TRACKER</h1>
+            </div>
+            <main>
                 <p>Entrar com</p>
                 <button onClick={handleGoogleSignIn}>
                     <img src={Google} alt="Google" /> Entrar com Google
@@ -38,7 +43,7 @@ export function Login() {
                 <button onClick={handleFacebookSignIn}>
                     <img src={Facebook} alt="Facebook" /> Entrar com Facebook
                 </button> */}
-            </div>
+            </main>
         </Container>
     )
 }

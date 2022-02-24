@@ -1,12 +1,12 @@
-import { Container } from './styles.js';
-
 import { Panel, History } from '../../components';
+
+import { Container } from './styles.js';
 
 export function Home() {
     return (
         <Container>
             <Panel />
-            <History />
+            <History transactionsLenght={-6} />
         </Container>
     )
 }

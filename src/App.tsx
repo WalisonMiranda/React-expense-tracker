@@ -1,8 +1,7 @@
-import { useContext } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import { Navbar } from './components';
-import { Login, Home, History, NotFound } from './pages';
+import { Login, Home, Transactions, NotFound } from './pages';
 
 import { AuthContextProvider } from './contexts/AuthContext';
 
@@ -32,7 +31,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
           <NavRoute exact path="/home" component={Home} />
-          <NavRoute exact path="/history" component={History} />
+          <NavRoute exact path="/transactions" component={Transactions} />
           <Route path='*' exact={true} component={NotFound} />
         </Switch>
       </AuthContextProvider>

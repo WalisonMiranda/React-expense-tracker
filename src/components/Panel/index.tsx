@@ -20,7 +20,6 @@ export function Panel() {
         }, 0);
 
         setBalance(formatter(totalBalance).toString());
-        
     }, [transactions]);
 
     return (

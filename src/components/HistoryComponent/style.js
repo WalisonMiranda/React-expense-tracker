@@ -40,7 +40,7 @@ const Container = styled.div`
 
     td img {
       height: 22px;
-      width: auto;
+      width: 22px;
       cursor: pointer;
 
       :hover {

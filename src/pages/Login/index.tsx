@@ -1,15 +1,15 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useHistory } from "react-router";
 
 import { AuthContext } from "../../contexts/AuthContext";
 
 import { Container } from './styles';
 import Google from '../../assets/img/google.svg';
-import Facebook from '../../assets/img/facebook.svg';
+// import Facebook from '../../assets/img/facebook.svg';
 
 export function Login() {
     const history = useHistory();
-    const { user, signInWithGoogle, signInWithFacebook } = useContext(AuthContext);
+    const { user, signInWithGoogle } = useContext(AuthContext);
 
     const handleGoogleSignIn = async () => {
         if(!user) await signInWithGoogle();

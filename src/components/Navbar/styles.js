@@ -40,6 +40,7 @@ const Profile = styled.div`
         font-size: 16px;
         text-align: center;
         padding: 8px;
+        color: #1f1f1f;
         cursor: pointer;
         transition: all ease .2s;
 
@@ -66,6 +67,7 @@ Profile.User = styled.div`
         font-size: 16px;
         line-height: 1.5;
         margin-left: 8px;
+        color: #1f1f1f;
     }
 `;
 

@@ -26,6 +26,7 @@ export function Form({ buttonColor, buttonType }: ButtonProps) {
     description: '',
     date: ''
   });
+  
   const [error, setError] = useState(false);
 
   const reset = () => {
@@ -61,6 +62,7 @@ export function Form({ buttonColor, buttonType }: ButtonProps) {
       <FormField>
         <label>Valor $</label>
         <input
+          aria-label="Valor"
           type="number"
           required
           value={transaction.ammount}
@@ -73,6 +75,7 @@ export function Form({ buttonColor, buttonType }: ButtonProps) {
       <FormField>
         <label>Descrição</label>
         <input
+          aria-label="Descrição"
           onChange={(e) => setTransaction(
             {...transaction, description: e.target.value}
           )}
@@ -84,6 +87,7 @@ export function Form({ buttonColor, buttonType }: ButtonProps) {
       <FormField>
         <label>Data</label>
         <input
+          aria-label="Data"
           onChange={(e) => setTransaction(
             {...transaction, date: e.target.value}
           )}

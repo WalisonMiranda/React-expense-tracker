@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { formatter } from "../../helpers/numberFormat";
 
+import { database } from "../../services/firebase";
+
 import { Container } from './style';
 import lixeira from '../../assets/img/lixeira.png';
 
@@ -10,10 +12,12 @@ type HistoryProps = {
 }
 
 export function History({ transactionsLenght }: HistoryProps) {
-  const { transactions } = useContext(AuthContext);
+  const { transactions, user } = useContext(AuthContext);
 
-  const handleDeleteTransaction = (id: string) => {
-    console.log('deleted', id);
+  const handleDeleteTransaction = async (id: string) => {
+    const transactionRef = database.ref(`users/${user?.id}/user_transactions`);
+
+    await transactionRef.child(id).remove();
   }
 
   return (

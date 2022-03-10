@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import { Navbar } from './components';
 import { Login, Home, Transactions, NotFound } from './pages';
+import { Navbar } from './components';
 
 import { AuthContextProvider } from './contexts/AuthContext';
 
@@ -14,6 +14,7 @@ type RouteProps = {
 }
 
 function App() {
+
   const NavRoute = ({path, exact, component: Component}: RouteProps) => {
     return (
       <Route exact={exact} path={path} render={(props) => (

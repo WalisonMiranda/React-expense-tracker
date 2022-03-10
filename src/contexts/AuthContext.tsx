@@ -8,7 +8,6 @@ type User = {
     avatar: string;
 }
 
-
 type AuthContextProviderProps = {
     children: ReactNode;
 }

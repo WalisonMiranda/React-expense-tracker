@@ -40,13 +40,3 @@ export const Wrapper = styled.main`
     }
   }
 `;
-
-
-  /* --purple: #DB76FF;
-  --background: #f2f3f5;
-  --gray: #E8E8E8;
-  --text: #3E3E3E;
-  --red: #e83f5b;
-  --green: #9DDB4E; */
-
-
